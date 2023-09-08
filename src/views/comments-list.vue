@@ -16,6 +16,7 @@ const sortedComments = ref(comments.value.sort((a, b) => (a.created > b.created 
 </script>
 
 <template lang="pug">
+h1 Comments
 ul.comments-list
   comment(v-for="(comment, i) in sortedComments" :key="i" :comment="comment")
 </template>
