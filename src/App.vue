@@ -1,3 +1,7 @@
+<script setup>
+import CommentsList from './views/comments-list.vue'
+</script>
+
 <template>
   <div>
     <a href="https://vitejs.dev" target="_blank">
@@ -7,6 +11,7 @@
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
+  <comments-list />
 </template>
 
 <style lang="scss" scoped>
