@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { faker } from '@faker-js/faker'
 import Comment from '../components/comment.vue'
 
-let comments = Array(100).fill('').map((item, i) => ({
+const comments = Array(100).fill('').map((item, i) => ({
   id: i + 1,
   text: faker.lorem.sentences(),
   author: faker.person.fullName(),
@@ -11,8 +11,7 @@ let comments = Array(100).fill('').map((item, i) => ({
   created: faker.date.recent({ days: 1000 })
 }))
 
-comments = ref(comments)
-const sortedComments = ref(comments.value.sort((a, b) => (a.created > b.created ? -1 : 1)))
+const sortedComments = ref(comments.sort((a, b) => (a.created > b.created ? -1 : 1)))
 </script>
 
 <template lang="pug">
