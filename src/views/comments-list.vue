@@ -12,11 +12,12 @@ let comments = Array(100).fill('').map((item, i) => ({
 }))
 
 comments = ref(comments)
+const sortedComments = ref(comments.value.sort((a, b) => (a.created > b.created ? -1 : 1)))
 </script>
 
 <template lang="pug">
 ul.comments-list
-  comment(v-for="(comment, i) in comments" :key="i" :comment="comment")
+  comment(v-for="(comment, i) in sortedComments" :key="i" :comment="comment")
 </template>
 
 <style lang="scss">
