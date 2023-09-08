@@ -7,6 +7,7 @@ defineProps({
 <template lang="pug">
 li.comment
   .flex.align-center
+    img.comment__avatar(:src="comment.avatar")
     .comment__author {{ comment.author }}
     .comment__date , {{ comment.created }}
   p.comment__text {{ comment.text }}
@@ -22,6 +23,13 @@ li.comment
 
   &:nth-child(odd) {
     background-color: rgba(124, 124, 124, 0.08);
+  }
+
+  &__avatar {
+    border-radius: 99em;
+    width: 1.5rem;
+    aspect-ratio: 1;
+    margin-right: 0.75rem;
   }
 
   &__author {
