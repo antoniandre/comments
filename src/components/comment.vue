@@ -49,10 +49,11 @@ li.comment
 
   &__author {
     font-weight: bold;
+    color: var(--title-color);
   }
 
   &__date {
-    color: #ffffff69;
+    color: var(--discrete-color);
     font-size: 0.8rem;
   }
 
@@ -60,7 +61,7 @@ li.comment
     margin: 0.75rem 0 0;
     line-height: 1.2;
     font-size: 0.9rem;
-    color: #ffffffbe;
+    color: var(--body-color);
   }
 }
 </style>
