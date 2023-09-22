@@ -18,11 +18,13 @@ const formatTimeAgo = date => {
 
   if (ageInSeconds < 10) return 'Just now' // Less than 10s ago.
 
-  Object.entries(durations).forEach(([durationName, durationValue], i) => {
+  Object.entries(durations).find(([durationName, durationValue], i) => {
     if (ageInSeconds >= durationValue) {
       const number = ~~(ageInSeconds / durationValue)
       date = `${number} ${durationName}${number > 1 ? 's' : ''} ago`
+      return false
     }
+    return true
   })
 
   return date
