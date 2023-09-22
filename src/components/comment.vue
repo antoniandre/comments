@@ -1,15 +1,29 @@
 <script setup>
+
+// All in seconds.
+const durations = {
+  second: 1,
+  minute: 60,
+  hour: 3600,
+  day: 86400,
+  week: 604800,
+  month: 2592000,
+  year: 31536000
+}
+
 const formatTimeAgo = date => {
   if (typeof date === 'string') date = new Date(date.replace(/-/g, '/'))
 
   const ageInSeconds = (new Date().getTime() - date.getTime()) / 1000 // Delta seconds to now.
-  if (ageInSeconds >= 3600 * 24 * 365) date = '1 year ago'
-  else if (ageInSeconds >= 3600 * 24 * 30) date = '1 month ago'
-  else if (ageInSeconds >= 3600 * 24) date = '1 day ago'
-  else if (ageInSeconds >= 3600) date = '1 hour ago'
-  else if (ageInSeconds >= 60) date = '1 minute ago'
-  else if (ageInSeconds >= 10) date = '10 seconds ago'
-  else if (ageInSeconds < 10) date = 'Just now'
+
+  if (ageInSeconds < 10) return 'Just now' // Less than 10s ago.
+
+  Object.entries(durations).forEach(([durationName, durationValue], i) => {
+    if (ageInSeconds >= durationValue) {
+      const number = ~~(ageInSeconds / durationValue)
+      date = `${number} ${durationName}${number > 1 ? 's' : ''} ago`
+    }
+  })
 
   return date
 }
