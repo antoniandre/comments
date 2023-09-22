@@ -1,5 +1,6 @@
-# Comments
+<img width="1233" alt="Screenshot 2023-09-08 at 15 54 22" src="https://github.com/antoniandre/comments/assets/22971289/9553511a-ac16-460f-86aa-b95f73e79f49">
 
+# Comments
 One of my workshops to practice modern frontend. :zap:
 
 ## To do
@@ -13,7 +14,6 @@ One of my workshops to practice modern frontend. :zap:
 - [ ]  Create a function to format the creation date
 
 ---
-
 
 # Vue 3 + Vite
 
