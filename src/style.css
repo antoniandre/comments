@@ -66,7 +66,7 @@ button:focus-visible {outline: 4px auto -webkit-focus-ring-color;}
     background-color: #ffffff;
     --body-color: #000000be;
     --title-color: #000;
-    --discrete-color: #00000060;
+    --discrete-color: #00000069;
   }
 
   a:hover {color: #747bff;}
