@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue'
 
 // All in seconds.
 const durations = {
@@ -30,8 +31,19 @@ const formatTimeAgo = date => {
   return date
 }
 
-defineProps({
-  comment: Object
+const props = defineProps({
+  comment: Object,
+  counter: Number
+})
+
+const commentOlderThan1day = computed(() => {
+  const ageInSeconds = (new Date().getTime() - props.comment.created.getTime()) / 1000 // Delta seconds to now.
+  return ageInSeconds < 24 * 3600
+})
+// The formatted age will be updated every time the counter prop changes.
+const commentFormattedAge = computed(() => {
+  if (commentOlderThan1day && props.counter) return formatTimeAgo(props.comment.created)
+  return ''
 })
 </script>
 
@@ -40,7 +52,7 @@ li.comment
   .flex.align-center
     img.comment__avatar(:src="comment.avatar")
     .comment__author {{ comment.author }}
-    .comment__date , {{ formatTimeAgo(comment.created) }} - {{ comment.created }}
+    .comment__date , {{ commentFormattedAge }}
   p.comment__text {{ comment.text }}
 </template>
 

@@ -12,12 +12,17 @@ const comments = Array(100).fill('').map((item, i) => ({
 }))
 
 const sortedComments = ref(comments.sort((a, b) => (a.created > b.created ? -1 : 1)))
+
+// One counter that triggers the reactivity of every comment every sec so their age is updated.
+// Much better than a setInterval in all the comments.
+let commentsAgeCounter = ref(0)
+setInterval(() => commentsAgeCounter.value++)
 </script>
 
 <template lang="pug">
 h1 Comments
 ul.comments-list
-  comment(v-for="(comment, i) in sortedComments" :key="i" :comment="comment")
+  comment(v-for="(comment, i) in sortedComments" :key="i" :comment="comment" :counter="commentsAgeCounter")
 </template>
 
 <style lang="scss">
